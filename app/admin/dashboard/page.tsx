@@ -1,5 +1,6 @@
-import { createShipmentAction, updateShipmentLocationAction } from "@/app/admin/actions";
+import { createShipmentAction, updatePricingPlanAction, updateShipmentLocationAction } from "@/app/admin/actions";
 import { signOutAction } from "@/app/login/actions";
+import { getPricingPlans } from "@/lib/pricing";
 import { createClient } from "@/lib/supabase/server";
 import type { ShipmentRow } from "@/lib/supabase/types";
 import Link from "next/link";
@@ -10,7 +11,7 @@ export const metadata = {
 };
 
 type DashboardProps = {
-  searchParams: Promise<{ created?: string; updated?: string; error?: string }>;
+  searchParams: Promise<{ created?: string; updated?: string; pricing?: string; error?: string }>;
 };
 
 export default async function AdminDashboardPage({ searchParams }: DashboardProps) {
@@ -42,6 +43,8 @@ export default async function AdminDashboardPage({ searchParams }: DashboardProp
     .order("created_at", { ascending: false })
     .limit(10);
 
+  const pricingPlans = await getPricingPlans();
+
   return (
     <main className="bg-surface px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-6xl space-y-10">
@@ -65,6 +68,11 @@ export default async function AdminDashboardPage({ searchParams }: DashboardProp
             Shipment created successfully.
           </p>
         )}
+        {params.pricing && (
+          <p className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
+            Pricing plan updated.
+          </p>
+        )}
         {params.updated && (
           <p className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
             Shipment location updated.
@@ -75,6 +83,48 @@ export default async function AdminDashboardPage({ searchParams }: DashboardProp
             {decodeURIComponent(params.error)}
           </p>
         )}
+
+        <section className="rounded-xl border border-border bg-white p-6">
+          <h2 className="font-serif text-xl font-bold text-foreground">Pricing Plans</h2>
+          <p className="mt-1 text-sm text-muted">
+            Each plan has its own price — changing Road Freight does not affect Ocean or Air.
+          </p>
+          <div className="mt-4 space-y-3">
+            {pricingPlans.map((plan) => (
+              <form
+                key={plan.slug}
+                action={updatePricingPlanAction}
+                className="flex flex-wrap items-end gap-3 rounded-lg border border-border p-4"
+              >
+                <input type="hidden" name="slug" value={plan.slug} />
+                <div className="min-w-[140px] flex-1">
+                  <p className="text-sm font-bold uppercase tracking-wide text-muted">{plan.name}</p>
+                  <p className="text-xs text-muted">{plan.load}</p>
+                </div>
+                <div>
+                  <label htmlFor={`price-${plan.slug}`} className="block text-xs font-medium text-muted">
+                    Price ($/shipment)
+                  </label>
+                  <input
+                    id={`price-${plan.slug}`}
+                    name="price"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    defaultValue={plan.price}
+                    className="mt-1 w-28 border border-border px-3 py-2 text-sm"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="border border-gold bg-gold px-4 py-2 text-xs font-bold text-black"
+                >
+                  Save
+                </button>
+              </form>
+            ))}
+          </div>
+        </section>
 
         <section className="rounded-xl border border-border bg-white p-6">
           <h2 className="font-serif text-xl font-bold text-foreground">Create Shipment</h2>

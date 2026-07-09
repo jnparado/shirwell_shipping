@@ -1,30 +1,9 @@
+import { getPricingPlans } from "@/lib/pricing";
 import Link from "next/link";
 
-const plans = [
-  {
-    name: "Road Freight",
-    price: 10,
-    load: "40kg load",
-    features: ["Warehousing", "Free Packaging", "24/7 Support"],
-    featured: false,
-  },
-  {
-    name: "Ocean Freight",
-    price: 20,
-    load: "70kg load",
-    features: ["Warehousing", "Free Packaging", "24/7 Support"],
-    featured: true,
-  },
-  {
-    name: "Air Freight",
-    price: 10,
-    load: "40kg load",
-    features: ["Warehousing", "Free Packaging", "24/7 Support"],
-    featured: false,
-  },
-];
+export default async function Pricing() {
+  const plans = await getPricingPlans();
 
-export default function Pricing() {
   return (
     <section id="pricing" className="py-12 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -44,7 +23,7 @@ export default function Pricing() {
         <div className="mt-10 grid gap-6 sm:mt-16 sm:gap-8 md:grid-cols-3">
           {plans.map((plan) => (
             <div
-              key={plan.name}
+              key={plan.slug}
               className={`relative rounded-2xl border p-5 transition-all hover:shadow-xl sm:p-8 ${
                 plan.featured
                   ? "border-primary bg-primary text-white shadow-lg lg:scale-[1.02]"
@@ -74,7 +53,7 @@ export default function Pricing() {
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2">
                     <svg
-                      className={`h-5 w-5 shrink-0 ${plan.featured ? "text-accent" : "text-accent"}`}
+                      className="h-5 w-5 shrink-0 text-accent"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >

@@ -58,6 +58,18 @@ where email = 'your-admin@email.com';
 
 Tracking reads from Supabase first, then falls back to simulated data if not configured.
 
+## Pricing plans
+
+Run `supabase/pricing_plans.sql` in the SQL Editor to create independent pricing rows:
+
+| Slug | Plan | Default price |
+|------|------|---------------|
+| `road-freight` | Road Freight | $10/shipment |
+| `ocean-freight` | Ocean Freight | $20/shipment |
+| `air-freight` | Air Freight | $40/shipment |
+
+Update any single plan in **Admin Dashboard → Pricing Plans** without affecting the others.
+
 ## Admin dashboard
 
 `/admin/dashboard` lets admins:

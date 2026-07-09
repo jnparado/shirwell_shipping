@@ -123,3 +123,34 @@ export async function updateShipmentLocationAction(formData: FormData) {
 
   redirect("/admin/dashboard?updated=1");
 }
+
+export async function updatePricingPlanAction(formData: FormData) {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) redirect("/admin");
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
+
+  if (profile?.role !== "admin") redirect("/admin");
+
+  const slug = String(formData.get("slug"));
+  const price = Number(formData.get("price"));
+
+  const { error } = await supabase
+    .from("pricing_plans")
+    .update({ price })
+    .eq("slug", slug);
+
+  if (error) {
+    redirect(`/admin/dashboard?error=${encodeURIComponent(error.message)}`);
+  }
+
+  redirect("/admin/dashboard?pricing=1");
+}
