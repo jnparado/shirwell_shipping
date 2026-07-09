@@ -10,7 +10,7 @@ const plans = [
   },
   {
     name: "Ocean Freight",
-    price: 10,
+    price: 20,
     load: "70kg load",
     features: ["Warehousing", "Free Packaging", "24/7 Support"],
     featured: true,
