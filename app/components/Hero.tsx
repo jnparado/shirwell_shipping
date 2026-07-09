@@ -12,7 +12,7 @@ export default function Hero() {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-black/58" />
       </div>
 
       <div className="relative z-10 mx-auto grid max-w-7xl gap-8 px-4 pb-16 pt-24 sm:gap-10 sm:px-6 sm:pb-20 sm:pt-28 md:pt-32 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8 lg:pb-32 lg:pt-40">

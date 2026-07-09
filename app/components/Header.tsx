@@ -56,7 +56,7 @@ function HomeActionLink({
   const styles =
     variant === "solid"
       ? "border-gold bg-gold text-black hover:bg-gold-bright"
-      : "border-gold/40 bg-black/40 text-gold hover:border-gold hover:bg-black/60";
+      : "border-gold/40 bg-black/55 text-gold hover:border-gold hover:bg-black/70";
 
   return (
     <Link
@@ -110,7 +110,7 @@ function HomeHeader() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-white/10 bg-black/80 px-3 py-3 backdrop-blur-md md:hidden">
+        <nav className="border-t border-white/10 bg-black/85 px-3 py-3 backdrop-blur-md md:hidden">
           <ul className="flex flex-col gap-2">
             {homeActions.map((action) => (
               <li key={action.href}>
@@ -155,13 +155,13 @@ function InnerHeader() {
         <div className="hidden shrink-0 items-center gap-2 sm:gap-3 lg:flex">
           <Link
             href="/track"
-            className="rounded-xl border border-gold/40 bg-black/40 px-3 py-2 font-serif text-xs font-semibold text-gold backdrop-blur-sm transition-colors hover:border-gold hover:bg-black/60 sm:px-4 sm:text-sm"
+            className="rounded-xl border border-gold/40 bg-black/55 px-3 py-2 font-serif text-xs font-semibold text-gold backdrop-blur-sm transition-colors hover:border-gold hover:bg-black/60 sm:px-4 sm:text-sm"
           >
             Track Shipment
           </Link>
           <Link
             href="/login"
-            className="rounded-xl border border-gold/40 bg-black/40 px-3 py-2 font-serif text-xs font-semibold text-gold backdrop-blur-sm transition-colors hover:border-gold hover:bg-black/60 sm:px-4 sm:text-sm"
+            className="rounded-xl border border-gold/40 bg-black/55 px-3 py-2 font-serif text-xs font-semibold text-gold backdrop-blur-sm transition-colors hover:border-gold hover:bg-black/60 sm:px-4 sm:text-sm"
           >
             Log In
           </Link>
@@ -208,14 +208,14 @@ function InnerHeader() {
               <Link
                 href="/track"
                 onClick={() => setMenuOpen(false)}
-                className="flex-1 rounded-xl border border-gold/40 bg-black/40 py-2.5 text-center font-serif text-sm font-semibold text-gold"
+                className="flex-1 rounded-xl border border-gold/40 bg-black/55 py-2.5 text-center font-serif text-sm font-semibold text-gold"
               >
                 Track Shipment
               </Link>
               <Link
                 href="/login"
                 onClick={() => setMenuOpen(false)}
-                className="flex-1 rounded-xl border border-gold/40 bg-black/40 py-2.5 text-center font-serif text-sm font-semibold text-gold"
+                className="flex-1 rounded-xl border border-gold/40 bg-black/55 py-2.5 text-center font-serif text-sm font-semibold text-gold"
               >
                 Log In
               </Link>
