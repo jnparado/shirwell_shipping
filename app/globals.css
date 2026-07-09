@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --primary: #171717;
+  --primary-dark: #0a0a0a;
+  --accent: #c9a227;
+  --accent-hover: #dbb42c;
+  --gold: #c9a227;
+  --gold-bright: #f0c040;
+  --gold-muted: #a8893a;
+  --muted: #525252;
+  --surface: #fafafa;
+  --border: #e5e5e5;
+  --brand-red: #d42027;
+  --header-bg: #0a0a0a;
+  --header-surface: #141414;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-gold-muted: var(--gold-muted);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-brand-red: var(--brand-red);
+  --font-sans: var(--font-jakarta);
+  --font-serif: var(--font-playfair);
+}
+
+.font-serif {
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  overflow-x: hidden;
+}
