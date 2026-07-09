@@ -3,21 +3,21 @@ import Link from "next/link";
 const plans = [
   {
     name: "Road Freight",
-    price: 51,
+    price: 40,
     load: "40kg load",
     features: ["Warehousing", "Free Packaging", "24/7 Support"],
     featured: false,
   },
   {
     name: "Ocean Freight",
-    price: 70,
+    price: 40,
     load: "70kg load",
     features: ["Warehousing", "Free Packaging", "24/7 Support"],
     featured: true,
   },
   {
     name: "Air Freight",
-    price: 100,
+    price: 40,
     load: "40kg load",
     features: ["Warehousing", "Free Packaging", "24/7 Support"],
     featured: false,
