@@ -37,7 +37,6 @@ export default function Footer() {
             <h3 className="text-sm font-bold uppercase tracking-widest text-white">Quick Links</h3>
             <ul className="mt-4 space-y-2.5 text-sm">
               {[
-                { href: "/#about", label: "About" },
                 { href: "/#services", label: "Services" },
                 { href: "/#pricing", label: "Pricing" },
                 { href: "/#contact", label: "Contact" },

@@ -5,10 +5,10 @@
   --foreground: #0a0a0a;
   --primary: #171717;
   --primary-dark: #0a0a0a;
-  --accent: #c9a227;
-  --accent-hover: #dbb42c;
-  --gold: #c9a227;
-  --gold-bright: #f0c040;
+  --accent: #e8c547;
+  --accent-hover: #ffd700;
+  --gold: #e8c547;
+  --gold-bright: #ffd700;
   --gold-muted: #a8893a;
   --muted: #525252;
   --surface: #f2f2f2;
@@ -38,6 +38,13 @@
 
 .font-serif {
   font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+}
+
+.header-gold-text {
+  color: #ffd700;
+  text-shadow:
+    0 1px 2px rgb(0 0 0 / 0.95),
+    0 0 10px rgb(255 215 0 / 0.35);
 }
 
 html {

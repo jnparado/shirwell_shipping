@@ -16,8 +16,8 @@ export default function About() {
         <span className="mb-4 block h-1 w-12 bg-white sm:mb-6 sm:w-14" aria-hidden="true" />
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-white sm:text-sm">About Us</p>
         <h2 className="mt-4 max-w-xl text-xl font-bold leading-snug text-white sm:mt-5 sm:text-2xl lg:text-3xl">
-          Founded in 2012, we belong to a distinguished class of logistic companies with a
-          clear defined market path.
+          Shirwell Shipping, founded in 2019, belongs to a distinguished class of logistic
+          companies with a clear defined market path in Australia.
         </h2>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/95 sm:mt-6 sm:text-base lg:text-[1.05rem]">
           With scores of local branches and a robust global network, we provide domestic

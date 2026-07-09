@@ -1,3 +1,4 @@
+import ContactForm from "./ContactForm";
 import { siteConfig } from "@/lib/site";
 
 export default function Contact() {
@@ -16,50 +17,7 @@ export default function Contact() {
         </div>
 
         <div className="mx-auto mt-8 grid max-w-5xl gap-8 sm:mt-12 sm:gap-12 lg:grid-cols-2">
-          <form action={`mailto:${siteConfig.contactEmail}`} method="post" encType="text/plain" className="space-y-5">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-foreground">
-                Full Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                className="mt-1.5 w-full border border-border bg-white px-4 py-3 text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-foreground">
-                Email Address
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                className="mt-1.5 w-full border border-border bg-white px-4 py-3 text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-foreground">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                required
-                className="mt-1.5 w-full border border-border bg-white px-4 py-3 text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-brand-red py-3.5 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-brand-red/90 sm:w-auto sm:px-10"
-            >
-              Send Message
-            </button>
-          </form>
+          <ContactForm />
 
           <div className="space-y-8">
             <div>

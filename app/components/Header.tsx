@@ -7,7 +7,6 @@ import LogoBrand from "./LogoBrand";
 
 const navLinks = [
   { href: "/#home", label: "Home" },
-  { href: "/#about", label: "About" },
   { href: "/#services", label: "Services" },
   { href: "/#pricing", label: "Pricing" },
   { href: "/#contact", label: "Contact" },
@@ -29,10 +28,10 @@ function NavLink({ href, label, onClick }: { href: string; label: string; onClic
     <Link
       href={href}
       onClick={onClick}
-      className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+      className={`rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
         isActive
-          ? "border border-gold text-gold"
-          : "border border-transparent text-gold/75 hover:border-gold/30 hover:text-gold"
+          ? "header-gold-text border border-gold-bright"
+          : "header-gold-text border border-transparent hover:border-gold-bright/60"
       }`}
     >
       {label}
@@ -55,14 +54,14 @@ function HomeActionLink({
 }) {
   const styles =
     variant === "solid"
-      ? "border-gold bg-gold text-black hover:bg-gold-bright"
-      : "border-gold/40 bg-black/55 text-gold hover:border-gold hover:bg-black/70";
+      ? "border-2 border-gold-bright bg-gold-bright text-black shadow-lg shadow-black/40 hover:bg-[#ffe566]"
+      : "header-gold-text border-2 border-gold-bright bg-[#141414] shadow-lg shadow-black/40 hover:bg-[#1a1a1a]";
 
   return (
     <Link
       href={href}
       onClick={onClick}
-      className={`block w-full rounded-xl border px-2.5 py-2 text-center font-serif text-[10px] font-semibold uppercase tracking-wide backdrop-blur-md transition-colors sm:w-auto sm:px-4 sm:py-2 sm:text-xs md:inline-block md:px-5 md:text-sm ${styles}`}
+      className={`block w-full rounded-xl px-2.5 py-2 text-center font-serif text-[10px] font-extrabold uppercase tracking-wide transition-colors sm:w-auto sm:px-4 sm:py-2.5 sm:text-xs md:inline-block md:px-5 md:text-sm ${styles}`}
     >
       <span className="md:hidden">{shortLabel}</span>
       <span className="hidden md:inline">{label}</span>
@@ -74,7 +73,7 @@ function MenuToggle({ open, onClick }: { open: boolean; onClick: () => void }) {
   return (
     <button
       type="button"
-      className="inline-flex items-center justify-center rounded-lg border border-gold/40 p-2 text-gold md:hidden"
+      className="header-gold-text inline-flex items-center justify-center rounded-lg border-2 border-gold-bright bg-[#141414] p-2 shadow-md md:hidden"
       onClick={onClick}
       aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
@@ -96,7 +95,7 @@ function HomeHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-gold-bright/50 bg-[#0a0a0a] shadow-lg shadow-black/60">
       <div className="flex min-w-0 items-center justify-between gap-2 px-3 py-2 sm:px-6 sm:py-4">
         <LogoBrand compact />
 
@@ -110,7 +109,7 @@ function HomeHeader() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-white/10 bg-black/85 px-3 py-3 backdrop-blur-md md:hidden">
+        <nav className="border-t border-gold/20 bg-[#0a0a0a] px-3 py-3 md:hidden">
           <ul className="flex flex-col gap-2">
             {homeActions.map((action) => (
               <li key={action.href}>
@@ -125,7 +124,7 @@ function HomeHeader() {
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="block rounded-lg px-3 py-2.5 font-serif text-sm font-medium text-gold/90 hover:bg-gold/10 hover:text-gold"
+                  className="header-gold-text block rounded-lg px-3 py-2.5 font-serif text-sm font-semibold hover:bg-gold-bright/10"
                 >
                   {link.label}
                 </Link>
@@ -142,7 +141,7 @@ function InnerHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-[#0a0a0a]">
+    <header className="sticky top-0 z-50 border-b-2 border-gold-bright/50 bg-[#0a0a0a] shadow-lg shadow-black/60">
       <div className="mx-auto flex min-w-0 max-w-7xl items-center justify-between gap-2 px-3 py-2 sm:px-6 sm:py-3 lg:gap-6">
         <LogoBrand compact />
 
@@ -155,19 +154,19 @@ function InnerHeader() {
         <div className="hidden shrink-0 items-center gap-2 sm:gap-3 lg:flex">
           <Link
             href="/track"
-            className="rounded-xl border border-gold/40 bg-black/55 px-3 py-2 font-serif text-xs font-semibold text-gold backdrop-blur-sm transition-colors hover:border-gold hover:bg-black/60 sm:px-4 sm:text-sm"
+            className="header-gold-text rounded-xl border-2 border-gold-bright bg-[#141414] px-3 py-2 font-serif text-xs font-extrabold shadow-md transition-colors hover:bg-[#1a1a1a] sm:px-4 sm:text-sm"
           >
             Track Shipment
           </Link>
           <Link
             href="/login"
-            className="rounded-xl border border-gold/40 bg-black/55 px-3 py-2 font-serif text-xs font-semibold text-gold backdrop-blur-sm transition-colors hover:border-gold hover:bg-black/60 sm:px-4 sm:text-sm"
+            className="header-gold-text rounded-xl border-2 border-gold-bright bg-[#141414] px-3 py-2 font-serif text-xs font-extrabold shadow-md transition-colors hover:bg-[#1a1a1a] sm:px-4 sm:text-sm"
           >
             Log In
           </Link>
           <Link
             href="/admin"
-            className="rounded-xl border border-gold bg-gold px-3 py-2 font-serif text-xs font-bold text-black transition-colors hover:bg-gold-bright sm:px-4 sm:text-sm"
+            className="rounded-xl border-2 border-gold-bright bg-gold-bright px-3 py-2 font-serif text-xs font-extrabold text-black shadow-md transition-colors hover:bg-[#ffe566] sm:px-4 sm:text-sm"
           >
             Admin
           </Link>
@@ -175,7 +174,7 @@ function InnerHeader() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-lg border border-gold/30 p-2 text-gold lg:hidden"
+          className="header-gold-text inline-flex items-center justify-center rounded-lg border-2 border-gold-bright bg-[#141414] p-2 lg:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
@@ -208,21 +207,21 @@ function InnerHeader() {
               <Link
                 href="/track"
                 onClick={() => setMenuOpen(false)}
-                className="flex-1 rounded-xl border border-gold/40 bg-black/55 py-2.5 text-center font-serif text-sm font-semibold text-gold"
+                className="header-gold-text flex-1 rounded-xl border-2 border-gold-bright bg-[#141414] py-2.5 text-center font-serif text-sm font-extrabold"
               >
                 Track Shipment
               </Link>
               <Link
                 href="/login"
                 onClick={() => setMenuOpen(false)}
-                className="flex-1 rounded-xl border border-gold/40 bg-black/55 py-2.5 text-center font-serif text-sm font-semibold text-gold"
+                className="header-gold-text flex-1 rounded-xl border-2 border-gold-bright bg-[#141414] py-2.5 text-center font-serif text-sm font-extrabold"
               >
                 Log In
               </Link>
               <Link
                 href="/admin"
                 onClick={() => setMenuOpen(false)}
-                className="flex-1 rounded-xl border border-gold bg-gold py-2.5 text-center font-serif text-sm font-bold text-black"
+                className="flex-1 rounded-xl border-2 border-gold-bright bg-gold-bright py-2.5 text-center font-serif text-sm font-extrabold text-black"
               >
                 Admin
               </Link>
