@@ -1,57 +1,64 @@
-# Shirwell Shipping — React Native (Android)
+# Shirwell Shipping — Android WebView App
 
-Android app for **Shirwell Shipping**, built with **Expo** and **React Native**.
+Android app for **Shirwell Shipping**, built with **Expo** and **React Native WebView**. It loads the full Next.js website inside a native shell.
 
 ## Features
 
-- Home screen with hero, tracking form, and about section
-- **Track Shipment** with live Google Maps (Android)
-- Login and Admin screens
-- Gold/dark branding matching the website
+- Full-screen WebView of the Shirwell Shipping website
+- Android hardware back button navigates WebView history
+- Pull-to-refresh
+- Cookie/session support for login and admin flows
+- Gold/dark splash and status bar matching the brand
 
 ## Prerequisites
 
 - Node.js 20+
 - [Android Studio](https://developer.android.com/studio) with Android SDK
-- Google Maps API key with **Maps SDK for Android** enabled
+- The Next.js website running locally or deployed
 
 ## Setup
 
 ```bash
 cd mobile
-npm install
+npm install --legacy-peer-deps
 cp .env.example .env
 ```
 
-Add your Google Maps key to `.env`:
+Set the website URL in `.env`:
 
 ```bash
-EXPO_PUBLIC_GOOGLE_MAPS_API_KEY=your_android_maps_api_key
-```
+# Android emulator → host machine localhost
+EXPO_PUBLIC_WEB_APP_URL=http://10.0.2.2:3000
 
-Copy is optional if assets already exist; otherwise copy branding images from the web app:
+# Physical device on same Wi‑Fi (use your computer's LAN IP)
+# EXPO_PUBLIC_WEB_APP_URL=http://192.168.1.10:3000
 
-```bash
-cp ../public/logo-icon.png ./assets/logo-icon.png
-cp ../public/hero-background.png ./assets/hero-background.png
+# Production
+# EXPO_PUBLIC_WEB_APP_URL=https://your-domain.com
 ```
 
 ## Run on Android
 
-### Development build (recommended for Google Maps)
+1. Start the website from the repo root:
 
 ```bash
+cd ..
+npm run dev
+```
+
+2. Build and run the Android app:
+
+```bash
+cd mobile
 npx expo prebuild --platform android
 npm run android
 ```
 
-### Expo Go (limited — native maps may not work fully)
+For day-to-day development after prebuild:
 
 ```bash
-npm start
+npm run android
 ```
-
-Then press `a` for Android emulator, or scan the QR code with Expo Go on a device.
 
 ## Build APK / AAB
 
@@ -66,14 +73,13 @@ Release APK: `android/app/build/outputs/apk/release/`
 
 ```
 mobile/
-  app/           Expo Router screens (Home, Track, Login, Admin)
-  components/    Header, TrackingMap
-  lib/           Site config + live tracking simulation
-  constants/     Theme colors
+  app/           Expo Router — single WebView screen
+  constants/     Web app URL + theme colors
 ```
 
 ## Notes
 
-- Live tracking uses the same route simulation as the website (updates every 5 seconds).
-- For production GPS data, connect `lib/tracking.ts` to your backend API.
-- The Next.js website remains in the repo root; this `mobile/` folder is the Android app.
+- **Android emulator** uses `http://10.0.2.2:3000` to reach the dev server on your computer.
+- **Physical device** must use your computer's LAN IP, not `localhost`.
+- **Production** should use `https://` so cleartext traffic is not required.
+- The Next.js website lives in the repo root; this `mobile/` folder is the Android wrapper.
