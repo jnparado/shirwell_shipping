@@ -5,7 +5,8 @@ Android app for **Shirwell Shipping**, built with **Expo** and **React Native We
 ## Features
 
 - Full-screen WebView of the Shirwell Shipping website
-- Google AdSense ads from the website (shown inside the WebView)
+- **Google AdMob** native banner at the bottom of the screen
+- Google AdSense ads from the website (inside the WebView)
 - Android hardware back button navigates WebView history
 - Pull-to-refresh
 - Cookie/session support for login and admin flows
@@ -38,7 +39,27 @@ EXPO_PUBLIC_WEB_APP_URL=http://10.0.2.2:3000
 # EXPO_PUBLIC_WEB_APP_URL=https://your-domain.com
 ```
 
-Ads use **Google AdSense** on the website. Configure `NEXT_PUBLIC_ADSENSE_CLIENT_ID` and `NEXT_PUBLIC_ADSENSE_SLOT` in the repo root `.env.local` — they appear automatically in the Android WebView.
+Ads:
+- **AdMob** (native banner) — configure in `mobile/.env` (see below)
+- **AdSense** (website) — configure `NEXT_PUBLIC_ADSENSE_*` in repo root `.env.local`
+
+### AdMob setup
+
+Create an Android app at [Google AdMob](https://admob.google.com), add a **Banner** ad unit, then set in `mobile/.env`:
+
+```bash
+EXPO_PUBLIC_ADMOB_ANDROID_APP_ID=ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy
+EXPO_PUBLIC_ADMOB_BANNER_UNIT_ID=ca-app-pub-xxxxxxxxxxxxxxxx/zzzzzzzzzz
+```
+
+If unset, Google **test ad IDs** are used. After changing AdMob config, rebuild:
+
+```bash
+npx expo prebuild --platform android --clean
+npm run android
+```
+
+Set `EXPO_PUBLIC_ADMOB_ENABLED=false` to disable native ads.
 
 ## Run on Android
 
@@ -112,8 +133,9 @@ Release APK: `android/app/build/outputs/apk/release/`
 
 ```
 mobile/
-  app/           Expo Router — WebView screen
-  constants/     Web app URL + theme colors
+  app/           Expo Router — WebView + AdMob layout
+  components/    AdMob banner + SDK init
+  constants/     Web app URL, AdMob IDs, theme
 ```
 
 ## Notes

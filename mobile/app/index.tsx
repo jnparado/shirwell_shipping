@@ -1,3 +1,5 @@
+import { AdMobBanner } from "@/components/AdMobBanner";
+import { ADMOB_ENABLED } from "@/constants/admob";
 import { WEB_APP_URL } from "@/constants/config";
 import { colors } from "@/constants/theme";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -62,24 +64,27 @@ export default function HomeScreen() {
           <Text style={styles.loaderText}>Loading Shirwell Shipping…</Text>
         </View>
       )}
-      <WebView
-        ref={webViewRef}
-        source={{ uri: WEB_APP_URL }}
-        style={styles.webview}
-        onLoadStart={() => setLoading(true)}
-        onLoadEnd={() => setLoading(false)}
-        onNavigationStateChange={onNavigationStateChange}
-        onError={() => setError(`Could not connect to ${WEB_APP_URL}`)}
-        onHttpError={() => setError(`Could not connect to ${WEB_APP_URL}`)}
-        javaScriptEnabled
-        domStorageEnabled
-        sharedCookiesEnabled
-        thirdPartyCookiesEnabled
-        allowsBackForwardNavigationGestures
-        pullToRefreshEnabled
-        setSupportMultipleWindows={false}
-        originWhitelist={["*"]}
-      />
+      <View style={styles.content}>
+        <WebView
+          ref={webViewRef}
+          source={{ uri: WEB_APP_URL }}
+          style={styles.webview}
+          onLoadStart={() => setLoading(true)}
+          onLoadEnd={() => setLoading(false)}
+          onNavigationStateChange={onNavigationStateChange}
+          onError={() => setError(`Could not connect to ${WEB_APP_URL}`)}
+          onHttpError={() => setError(`Could not connect to ${WEB_APP_URL}`)}
+          javaScriptEnabled
+          domStorageEnabled
+          sharedCookiesEnabled
+          thirdPartyCookiesEnabled
+          allowsBackForwardNavigationGestures
+          pullToRefreshEnabled
+          setSupportMultipleWindows={false}
+          originWhitelist={["*"]}
+        />
+        {ADMOB_ENABLED && <AdMobBanner />}
+      </View>
     </SafeAreaView>
   );
 }
@@ -88,6 +93,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.headerBg,
+  },
+  content: {
+    flex: 1,
   },
   webview: {
     flex: 1,

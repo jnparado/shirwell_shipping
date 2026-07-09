@@ -5,6 +5,10 @@ import {
   withAndroidManifest,
 } from "@expo/config-plugins";
 
+const TEST_ANDROID_APP_ID = "ca-app-pub-3940256099942544~3347511713";
+const ADMOB_ANDROID_APP_ID =
+  process.env.EXPO_PUBLIC_ADMOB_ANDROID_APP_ID ?? TEST_ANDROID_APP_ID;
+
 /** Allow http:// URLs in WebView during local development (Android emulator). */
 const withCleartextTraffic: ConfigPlugin = (config) =>
   withAndroidManifest(config, (config) => {
@@ -25,7 +29,15 @@ export default ({ config }: ConfigContext): ExpoConfig =>
     icon: "./assets/icon.png",
     userInterfaceStyle: "dark",
     scheme: "shirwellshipping",
-    plugins: ["expo-router"],
+    plugins: [
+      "expo-router",
+      [
+        "react-native-google-mobile-ads",
+        {
+          androidAppId: ADMOB_ANDROID_APP_ID,
+        },
+      ],
+    ],
     android: {
       package: "com.shirwell.shipping",
       adaptiveIcon: {
@@ -36,5 +48,6 @@ export default ({ config }: ConfigContext): ExpoConfig =>
     },
     extra: {
       webAppUrl: process.env.EXPO_PUBLIC_WEB_APP_URL ?? "http://10.0.2.2:3000",
+      admobAndroidAppId: ADMOB_ANDROID_APP_ID,
     },
   });
