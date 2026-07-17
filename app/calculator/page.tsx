@@ -21,6 +21,12 @@ const RATES: Record<string, number> = {
 
 export default function RateCalculatorPage() {
   const [rate, setRate] = useState<number | null>(null);
+  const [breakdown, setBreakdown] = useState<{
+    base: number;
+    fuel: number;
+    handling: number;
+    other: number;
+  } | null>(null);
   const [type, setType] = useState("sea");
   const [weight, setWeight] = useState("");
   const [length, setLength] = useState("");
@@ -35,8 +41,14 @@ export default function RateCalculatorPage() {
     const h = Number(height) || 0;
     const volumetric = (l * wi * h) / 5000;
     const billable = Math.max(w, volumetric, 1);
-    const base = RATES[type] ?? 12.5;
-    setRate(Math.round(billable * base * 100) / 100);
+    const unit = RATES[type] ?? 12.5;
+    const base = Math.round(billable * unit * 100) / 100;
+    const fuel = Math.round(base * 0.12 * 100) / 100;
+    const handling = Math.round(base * 0.08 * 100) / 100;
+    const other = Math.round(base * 0.05 * 100) / 100;
+    const total = Math.round((base + fuel + handling + other) * 100) / 100;
+    setBreakdown({ base, fuel, handling, other });
+    setRate(total);
   }
 
   return (
@@ -121,11 +133,30 @@ export default function RateCalculatorPage() {
         <PrimaryButton type="submit">Calculate Rate</PrimaryButton>
       </form>
 
-      {rate !== null && (
-        <div className="animate-fade-up mt-8 rounded-2xl border border-border bg-surface-elevated p-6 text-center">
+      {rate !== null && breakdown && (
+        <div className="animate-fade-up mt-8 rounded-2xl border border-border bg-surface-elevated p-5 sm:p-6">
           <p className="text-sm text-muted">Estimated Rate</p>
-          <p className="mt-2 text-4xl font-bold text-success">${rate.toFixed(2)} USD</p>
-          <p className="mt-3 text-xs leading-relaxed text-muted">
+          <p className="mt-2 text-3xl font-bold text-success sm:text-4xl">
+            ${rate.toFixed(2)} USD
+          </p>
+          <dl className="mt-5 space-y-3 border-t border-border pt-4 text-sm">
+            {[
+              { label: "Base Rate", value: breakdown.base },
+              { label: "Fuel Surcharge", value: breakdown.fuel },
+              { label: "Handling Fee", value: breakdown.handling },
+              { label: "Other Fees", value: breakdown.other },
+            ].map((row) => (
+              <div key={row.label} className="flex justify-between gap-4">
+                <dt className="text-muted">{row.label}</dt>
+                <dd className="font-medium text-foreground">${row.value.toFixed(2)}</dd>
+              </div>
+            ))}
+            <div className="flex justify-between gap-4 border-t border-border pt-3">
+              <dt className="font-semibold text-foreground">Total</dt>
+              <dd className="font-bold text-success">${rate.toFixed(2)}</dd>
+            </div>
+          </dl>
+          <p className="mt-4 text-xs leading-relaxed text-muted">
             Final pricing may vary based on actual weight, dimensions, customs, and
             fuel surcharges at booking.
           </p>

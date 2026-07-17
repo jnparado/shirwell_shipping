@@ -34,10 +34,10 @@ export default function BookShipmentPage() {
                   key={option}
                   type="button"
                   onClick={() => setType(option)}
-                  className={`rounded-xl px-2 py-2.5 text-center text-xs font-semibold transition-colors sm:text-sm ${
+                  className={`rounded-xl border px-2 py-2.5 text-center text-xs font-semibold transition-colors sm:text-sm ${
                     active
-                      ? "bg-gold text-black"
-                      : "bg-surface-elevated text-foreground hover:bg-[#2a2a2a]"
+                      ? "border-gold bg-gold text-black"
+                      : "border-border bg-surface-elevated text-foreground hover:bg-[#2a2a2a]"
                   }`}
                 >
                   {option}

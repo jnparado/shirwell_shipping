@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
+  --background: #000000;
   --foreground: #ffffff;
-  --primary: #ffc107;
+  --primary: #f8b400;
   --primary-dark: #050505;
-  --accent: #ffc107;
-  --accent-hover: #ffd54f;
-  --gold: #ffc107;
-  --gold-bright: #ffd54f;
-  --gold-muted: #c9a227;
-  --muted: #9ca3af;
-  --surface: #141414;
-  --surface-elevated: #1e1e1e;
+  --accent: #f8b400;
+  --accent-hover: #ffc933;
+  --gold: #f8b400;
+  --gold-bright: #ffc933;
+  --gold-muted: #c99200;
+  --muted: #a0a0a0;
+  --surface: #121212;
+  --surface-elevated: #1a1a1a;
   --border: #2a2a2a;
-  --brand-red: #d42027;
+  --brand-red: #ef4444;
   --success: #22c55e;
   --info: #3b82f6;
   --warning: #f97316;
-  --header-bg: #0a0a0a;
-  --header-surface: #141414;
+  --header-bg: #000000;
+  --header-surface: #121212;
 }
 
 @theme inline {
@@ -49,7 +49,7 @@
 }
 
 .header-gold-text {
-  color: #ffc107;
+  color: #f8b400;
 }
 
 html {
@@ -64,7 +64,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Subtle page entrance */
 @keyframes fade-up {
   from {
     opacity: 0;

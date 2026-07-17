@@ -43,8 +43,16 @@ export default function TrackingSummaryCard({ shipment }: { shipment: Shipment }
       </div>
 
       {shipment.status === "Delivered" && (
+        <div className="mt-4 rounded-xl border border-info/30 bg-info/10 p-4">
+          <p className="font-semibold text-info">Delivered</p>
+          <p className="mt-1 text-sm text-foreground/90">{shipment.lastUpdated}</p>
+          <p className="mt-0.5 text-sm text-muted">{shipment.to}</p>
+        </div>
+      )}
+
+      {shipment.status === "In Transit" && (
         <div className="mt-4 rounded-xl border border-success/30 bg-success/10 p-4">
-          <p className="font-semibold text-success">Delivered</p>
+          <p className="font-semibold text-success">In Transit</p>
           <p className="mt-1 text-sm text-foreground/90">{shipment.lastUpdated}</p>
           <p className="mt-0.5 text-sm text-muted">{shipment.to}</p>
         </div>

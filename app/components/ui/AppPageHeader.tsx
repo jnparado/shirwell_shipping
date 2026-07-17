@@ -38,7 +38,7 @@ export default function AppPageHeader({
         </button>
       )}
 
-      <h1 className="flex-1 text-center text-lg font-semibold text-foreground">{title}</h1>
+      <h1 className="flex-1 text-center text-lg font-bold text-gold">{title}</h1>
 
       {showMenu ? (
         <button

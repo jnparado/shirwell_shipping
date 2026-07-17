@@ -3,9 +3,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Services from "./components/Services";
 import Stats from "./components/Stats";
-import Testimonials from "./components/Testimonials";
 import Pricing from "./components/Pricing";
-import Clients from "./components/Clients";
 import CTA from "./components/CTA";
 import Contact from "./components/Contact";
 import { adsenseConfig } from "@/lib/adsense";
@@ -13,9 +11,9 @@ import { adsenseConfig } from "@/lib/adsense";
 export default function HomePage() {
   return (
     <main>
+      {/* Design sheet Screen 1 — Home landing */}
       <Hero />
 
-      {/* Marketing sections below the app-style home */}
       <About />
       <Services />
       {adsenseConfig.enabled && (
@@ -33,9 +31,7 @@ export default function HomePage() {
         </section>
       )}
       <Stats />
-      <Testimonials />
       <Pricing />
-      <Clients />
       <CTA />
       <Contact />
     </main>

@@ -70,8 +70,8 @@ export default function Header() {
     <header
       className={`${
         isHome
-          ? "fixed border-transparent bg-gradient-to-b from-black/90 via-black/70 to-transparent"
-          : "sticky border-gold/20 bg-[#0a0a0a]/95 backdrop-blur-md"
+          ? "fixed border-white/5 bg-black/80 backdrop-blur-md"
+          : "sticky border-gold/20 bg-black/95 backdrop-blur-md"
       } top-0 left-0 right-0 z-50 border-b`}
     >
       <div className="mx-auto flex min-w-0 max-w-7xl items-center justify-between gap-3 px-3 py-3 sm:px-6">
