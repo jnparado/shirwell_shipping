@@ -40,12 +40,12 @@ export const metadata: Metadata = {
   publisher: siteConfig.name,
   category: "logistics",
   alternates: {
-    canonical: "/",
+    canonical: "/home",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url,
+    url: absoluteUrl("/home"),
     siteName: siteConfig.name,
     title: `${siteConfig.name} | Fast Delivery & Logistics`,
     description: siteConfig.description,

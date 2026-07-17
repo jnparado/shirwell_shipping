@@ -5,7 +5,12 @@ import { usePathname } from "next/navigation";
 import { Bell, Home, Plus, Ship, User } from "lucide-react";
 
 const tabs = [
-  { href: "/", label: "Home", icon: Home, match: (p: string) => p === "/" },
+  {
+    href: "/home",
+    label: "Home",
+    icon: Home,
+    match: (p: string) => p === "/home" || p === "/",
+  },
   {
     href: "/shipments",
     label: "Shipments",

@@ -50,5 +50,5 @@ export async function loginAction(
 export async function signOutAction() {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  redirect("/");
+  redirect("/home");
 }

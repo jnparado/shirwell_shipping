@@ -15,7 +15,7 @@ import {
 import LogoBrand from "./LogoBrand";
 
 const navLinks = [
-  { href: "/", label: "Home" },
+  { href: "/home", label: "Home" },
   { href: "/track", label: "Track" },
   { href: "/book", label: "Book" },
   { href: "/calculator", label: "Calculator" },
@@ -42,8 +42,8 @@ function NavLink({
 }) {
   const pathname = usePathname();
   const isActive =
-    href === "/"
-      ? pathname === "/"
+    href === "/home"
+      ? pathname === "/home" || pathname === "/"
       : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
@@ -64,7 +64,7 @@ function NavLink({
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const isHome = pathname === "/home" || pathname === "/";
 
   return (
     <header

@@ -19,7 +19,7 @@ export default function ShipmentsPage() {
 
   return (
     <AppShell>
-      <AppPageHeader title="My Shipments" backHref="/" />
+      <AppPageHeader title="My Shipments" backHref="/home" />
 
       <div className="mb-6 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {FILTERS.map((tab) => {

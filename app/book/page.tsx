@@ -21,7 +21,7 @@ export default function BookShipmentPage() {
 
   return (
     <AppShell narrow>
-      <AppPageHeader title="Book a Shipment" backHref="/" />
+      <AppPageHeader title="Book a Shipment" backHref="/home" />
 
       <form onSubmit={handleSubmit} className="animate-fade-up space-y-5">
         <div>

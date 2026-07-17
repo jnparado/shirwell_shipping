@@ -25,7 +25,7 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: siteConfig.name,
-    url: siteConfig.url,
+    url: absoluteUrl("/home"),
     description: siteConfig.description,
     publisher: {
       "@type": "Organization",
@@ -59,7 +59,7 @@ export default function JsonLd() {
       "Shipment Tracking",
       "E-commerce Logistics",
     ],
-    url: siteConfig.url,
+    url: absoluteUrl("/home"),
   };
 
   return (

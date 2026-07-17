@@ -28,7 +28,7 @@ export default function NotificationsPage() {
 
   return (
     <AppShell narrow>
-      <AppPageHeader title="Notifications" backHref="/" />
+      <AppPageHeader title="Notifications" backHref="/home" />
 
       <ul className="animate-fade-up space-y-2">
         {items.map((item) => (

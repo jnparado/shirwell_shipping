@@ -39,7 +39,7 @@ export default async function AccountPage() {
 
   return (
     <AppShell narrow>
-      <AppPageHeader title="My Account" backHref="/" />
+      <AppPageHeader title="My Account" backHref="/home" />
 
       <div className="animate-fade-up space-y-6">
         <div className="flex items-start gap-4 rounded-2xl border border-border bg-surface-elevated p-5">

@@ -9,7 +9,7 @@ type LogoBrandProps = {
 export default function LogoBrand({ className = "", compact = false }: LogoBrandProps) {
   return (
     <Link
-      href="/"
+      href="/home"
       className={`inline-flex shrink-0 items-center ${className}`}
       aria-label="Shirwell Shipping — Fast, Reliable, Worldwide"
     >

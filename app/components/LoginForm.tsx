@@ -57,7 +57,7 @@ export default function LoginForm({ next = "/account" }: { next?: string }) {
       </button>
 
       <p className="text-center text-sm text-muted">
-        <Link href="/" className="font-semibold text-gold hover:underline">
+        <Link href="/home" className="font-semibold text-gold hover:underline">
           ← Back to homepage
         </Link>
       </p>

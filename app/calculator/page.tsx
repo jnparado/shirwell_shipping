@@ -53,7 +53,7 @@ export default function RateCalculatorPage() {
 
   return (
     <AppShell narrow>
-      <AppPageHeader title="Rate Calculator" backHref="/" />
+      <AppPageHeader title="Rate Calculator" backHref="/home" />
 
       <form onSubmit={handleSubmit} className="animate-fade-up space-y-5">
         <AppSelect

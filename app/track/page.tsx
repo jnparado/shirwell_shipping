@@ -33,7 +33,7 @@ export default async function TrackPage({ searchParams }: TrackPageProps) {
 
   return (
     <AppShell narrow>
-      <AppPageHeader title="Track Shipment" backHref="/" />
+      <AppPageHeader title="Track Shipment" backHref="/home" />
 
       {!shipment ? (
         <div className="animate-fade-up space-y-5">

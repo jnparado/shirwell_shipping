@@ -37,6 +37,7 @@ export default function Footer() {
             <h3 className="text-sm font-bold uppercase tracking-widest text-foreground">Quick Links</h3>
             <ul className="mt-4 space-y-2.5 text-sm">
               {[
+                { href: "/home", label: "Home" },
                 { href: "/track", label: "Track Shipment" },
                 { href: "/book", label: "Book a Shipment" },
                 { href: "/calculator", label: "Rate Calculator" },
