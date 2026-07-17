@@ -6,8 +6,11 @@ import {
 } from "@expo/config-plugins";
 
 const TEST_ANDROID_APP_ID = "ca-app-pub-3940256099942544~3347511713";
+const TEST_IOS_APP_ID = "ca-app-pub-3940256099942544~1458002511";
 const ADMOB_ANDROID_APP_ID =
   process.env.EXPO_PUBLIC_ADMOB_ANDROID_APP_ID ?? TEST_ANDROID_APP_ID;
+const ADMOB_IOS_APP_ID =
+  process.env.EXPO_PUBLIC_ADMOB_IOS_APP_ID ?? TEST_IOS_APP_ID;
 
 /** Allow http:// URLs in WebView during local development (Android emulator). */
 const withCleartextTraffic: ConfigPlugin = (config) =>
@@ -32,18 +35,40 @@ export default ({ config }: ConfigContext): ExpoConfig =>
     plugins: [
       "expo-router",
       [
+        "expo-build-properties",
+        {
+          android: {
+            kotlinVersion: "2.1.20",
+          },
+        },
+      ],
+      "./plugins/withCompatibleAdMobSdk",
+      [
         "react-native-google-mobile-ads",
         {
           androidAppId: ADMOB_ANDROID_APP_ID,
+          iosAppId: ADMOB_IOS_APP_ID,
         },
       ],
     ],
     android: {
       package: "com.shirwell.shipping",
+      permissions: [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+      ],
       adaptiveIcon: {
         backgroundColor: "#0a0a0a",
         foregroundImage: "./assets/android-icon-foreground.png",
         backgroundImage: "./assets/android-icon-background.png",
+      },
+    },
+    ios: {
+      bundleIdentifier: "com.shirwell.shipping",
+      supportsTablet: true,
+      infoPlist: {
+        NSLocationWhenInUseUsageDescription:
+          "Shirwell Shipping uses your location to show your position on the tracking map.",
       },
     },
     extra: {

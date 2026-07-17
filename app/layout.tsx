@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import AdSenseScript from "./components/AdSenseScript";
+import { GoogleTagManagerBody, GoogleTagManagerHead } from "./components/GoogleTagManager";
 import SiteLayout from "./components/SiteLayout";
+import { adsenseConfig } from "@/lib/adsense";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -32,6 +35,9 @@ export const metadata: Metadata = {
     icon: "/logo-icon.png",
     apple: "/logo-icon.png",
   },
+  ...(adsenseConfig.enabled
+    ? { other: { "google-adsense-account": adsenseConfig.clientId } }
+    : {}),
 };
 
 export default function RootLayout({
@@ -42,6 +48,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.variable} ${playfair.variable} antialiased`}>
       <body>
+        <GoogleTagManagerHead />
+        <GoogleTagManagerBody />
+        <AdSenseScript />
         <SiteLayout>{children}</SiteLayout>
       </body>
     </html>

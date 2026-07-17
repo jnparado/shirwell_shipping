@@ -6,7 +6,7 @@ export default function Contact() {
     <section id="contact" className="bg-surface px-4 py-12 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl sm:px-2 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-bold uppercase tracking-widest text-brand-red">Contact Us</span>
+          <span className="text-sm font-bold uppercase tracking-widest text-gold">Contact Us</span>
           <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
             Get in Touch
           </h2>
@@ -22,13 +22,13 @@ export default function Contact() {
           <div className="space-y-8">
             <div>
               <h3 className="text-sm font-bold uppercase tracking-widest text-foreground">Email</h3>
-              <a href={`mailto:${siteConfig.contactEmail}`} className="mt-2 block break-all text-base text-muted hover:text-brand-red sm:text-lg">
+              <a href={`mailto:${siteConfig.contactEmail}`} className="mt-2 block break-all text-base text-muted hover:text-gold sm:text-lg">
                 {siteConfig.contactEmail}
               </a>
             </div>
             <div>
               <h3 className="text-sm font-bold uppercase tracking-widest text-foreground">Phone</h3>
-              <a href={`tel:${siteConfig.contactPhone.replace(/\D/g, "")}`} className="mt-2 block text-lg text-muted hover:text-brand-red">
+              <a href={`tel:${siteConfig.contactPhone.replace(/\D/g, "")}`} className="mt-2 block text-lg text-muted hover:text-gold">
                 {siteConfig.contactPhone}
               </a>
             </div>

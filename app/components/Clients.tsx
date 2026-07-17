@@ -28,9 +28,9 @@ export default function Clients() {
           {clients.map((client) => (
             <div
               key={client}
-              className="flex h-16 items-center justify-center rounded-xl border border-border bg-white px-3 shadow-sm sm:h-20 sm:px-4"
+              className="flex h-16 items-center justify-center rounded-xl border border-border bg-surface-elevated px-3 sm:h-20 sm:px-4"
             >
-              <span className="text-center text-xs font-bold text-muted/70 sm:text-sm">{client}</span>
+              <span className="text-center text-xs font-bold text-muted sm:text-sm">{client}</span>
             </div>
           ))}
         </div>

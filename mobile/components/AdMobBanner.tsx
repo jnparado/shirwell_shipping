@@ -15,7 +15,7 @@ export function AdMobBanner() {
     <View style={[styles.container, { paddingBottom: insets.bottom }]}>
       <BannerAd
         unitId={ADMOB_BANNER_UNIT_ID}
-        size={BannerAdSize.LARGE_ANCHORED_ADAPTIVE_BANNER}
+        size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
         onAdLoaded={() => setVisible(true)}
         onAdFailedToLoad={() => setVisible(false)}
       />

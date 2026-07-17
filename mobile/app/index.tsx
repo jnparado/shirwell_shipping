@@ -80,6 +80,7 @@ export default function HomeScreen() {
           thirdPartyCookiesEnabled
           allowsBackForwardNavigationGestures
           pullToRefreshEnabled
+          geolocationEnabled
           setSupportMultipleWindows={false}
           originWhitelist={["*"]}
         />

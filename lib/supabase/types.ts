@@ -25,6 +25,9 @@ export type ProfileRow = {
   id: string;
   email: string;
   role: "customer" | "admin";
+  full_name?: string | null;
+  name?: string | null;
+  phone?: string | null;
   created_at: string;
 };
 
