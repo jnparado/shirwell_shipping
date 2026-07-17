@@ -1,10 +1,10 @@
 import Link from "next/link";
 import {
   Box,
-  Calculator,
   FileText,
   Globe,
   MapPin,
+  Newspaper,
   Phone,
 } from "lucide-react";
 
@@ -13,7 +13,7 @@ const items = [
   { href: "/calculator", label: "Rate Calculator", icon: FileText },
   { href: "/#contact", label: "Branches", icon: MapPin },
   { href: "/#services", label: "Services", icon: Globe },
-  { href: "/#about", label: "News", icon: Calculator },
+  { href: "/#about", label: "News", icon: Newspaper },
   { href: "/#contact", label: "Contact Us", icon: Phone },
 ];
 

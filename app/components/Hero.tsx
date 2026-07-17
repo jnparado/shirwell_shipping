@@ -9,7 +9,7 @@ export default function Hero() {
       <section id="home" className="relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/hero-ship.jpg"
+            src="/hero-ship.png"
             alt="Cargo ship carrying containers at sunset"
             fill
             className="object-cover object-[center_40%]"
