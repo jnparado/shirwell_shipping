@@ -4,6 +4,9 @@ import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Login",
+  description: "Sign in to your Shirwell Shipping account to manage shipments and profile.",
+  alternates: { canonical: "/login" },
+  robots: { index: false, follow: true },
 };
 
 type LoginPageProps = {

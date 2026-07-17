@@ -27,6 +27,7 @@ const MENU_ITEMS = [
 
 export const metadata = {
   title: "My Account",
+  robots: { index: false, follow: false },
 };
 
 export default async function AccountPage() {

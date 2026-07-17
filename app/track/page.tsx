@@ -15,6 +15,15 @@ type TrackPageProps = {
 
 export const metadata = {
   title: "Track Shipment",
+  description:
+    "Track your Shirwell Shipping package in real time. Enter your tracking code for live status, route progress, and delivery updates.",
+  alternates: { canonical: "/track" },
+  openGraph: {
+    title: "Track Shipment | Shirwell Shipping",
+    description:
+      "Track your package in real time with Shirwell Shipping live shipment tracking.",
+    url: "/track",
+  },
 };
 
 export default async function TrackPage({ searchParams }: TrackPageProps) {

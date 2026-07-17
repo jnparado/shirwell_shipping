@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import AdSenseAd from "./components/AdSenseAd";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -7,6 +8,20 @@ import Pricing from "./components/Pricing";
 import CTA from "./components/CTA";
 import Contact from "./components/Contact";
 import { adsenseConfig } from "@/lib/adsense";
+import { siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: `${siteConfig.name} | Fast Delivery & Logistics`,
+  },
+  description: siteConfig.description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: `${siteConfig.name} | Fast Delivery & Logistics`,
+    description: siteConfig.description,
+    url: "/",
+  },
+};
 
 export default function HomePage() {
   return (
