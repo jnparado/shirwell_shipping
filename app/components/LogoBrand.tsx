@@ -10,8 +10,8 @@ export default function LogoBrand({ className = "", compact = false }: LogoBrand
   return (
     <Link
       href="/home"
-      className={`inline-flex shrink-0 items-center ${className}`}
-      aria-label="Shirwell Shipping — Fast, Reliable, Worldwide"
+      className={`inline-flex shrink-0 items-center gap-2.5 ${className}`}
+      aria-label="Shirwell Shipping"
     >
       <span
         className={`relative block overflow-hidden rounded-xl bg-white shadow-md shadow-black/40 ring-1 ring-gold/30 ${
@@ -21,13 +21,20 @@ export default function LogoBrand({ className = "", compact = false }: LogoBrand
         }`}
       >
         <Image
-          src="/logo.png"
-          alt="Shirwell Shipping logo featuring horse, cargo ship, and truck — Fast, Reliable, Worldwide"
+          src="/ship.png"
+          alt="Shirwell Shipping"
           fill
           className="object-contain p-0.5"
           sizes="(max-width: 640px) 44px, 64px"
           priority
         />
+      </span>
+      <span
+        className={`hidden truncate font-bold leading-tight text-gold sm:block ${
+          compact ? "text-sm" : "text-base"
+        }`}
+      >
+        Shirwell Shipping
       </span>
     </Link>
   );

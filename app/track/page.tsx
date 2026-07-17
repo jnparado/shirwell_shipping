@@ -14,14 +14,15 @@ type TrackPageProps = {
 };
 
 export const metadata = {
-  title: "Track Shipment",
+  title: "Track Shipping",
   description:
-    "Track your Shirwell Shipping package in real time. Enter your tracking code for live status, route progress, and delivery updates.",
+    "Track Shirwell Shipping deliveries in real time. Enter your shipping tracking code for live status, route progress, and delivery updates.",
+  keywords: ["track shipping", "Shirwell Shipping", "track shipment", "shipping tracker"],
   alternates: { canonical: "/track" },
   openGraph: {
-    title: "Track Shipment | Shirwell Shipping",
+    title: "Track Shipping | Shirwell Shipping",
     description:
-      "Track your package in real time with Shirwell Shipping live shipment tracking.",
+      "Track your shipping in real time with Shirwell Shipping.",
     url: "/track",
   },
 };

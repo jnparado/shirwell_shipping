@@ -6,8 +6,8 @@ export default function JsonLd() {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: absoluteUrl("/logo.png"),
-    image: absoluteUrl("/logo.png"),
+    logo: absoluteUrl("/ship.png"),
+    image: absoluteUrl("/ship.png"),
     description: siteConfig.description,
     email: siteConfig.contactEmail,
     telephone: siteConfig.contactPhone,
@@ -19,18 +19,24 @@ export default function JsonLd() {
       contactType: "customer service",
       availableLanguage: ["English"],
     },
+    slogan: "Fast • Reliable • Worldwide Shipping",
+    brand: {
+      "@type": "Brand",
+      name: "Shirwell Shipping",
+    },
   };
 
   const website = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: siteConfig.name,
+    name: "Shirwell Shipping",
+    alternateName: ["Shirwell Shipping", "shipping"],
     url: absoluteUrl("/home"),
     description: siteConfig.description,
     publisher: {
       "@type": "Organization",
-      name: siteConfig.name,
-      logo: absoluteUrl("/logo.png"),
+      name: "Shirwell Shipping",
+      logo: absoluteUrl("/ship.png"),
     },
     potentialAction: {
       "@type": "SearchAction",

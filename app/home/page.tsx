@@ -12,14 +12,23 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
-    absolute: `${siteConfig.name} | Fast Delivery & Logistics`,
+    absolute: "Shirwell Shipping | Shipping & Logistics Worldwide",
   },
   description: siteConfig.description,
+  keywords: siteConfig.keywords,
   alternates: { canonical: "/home" },
   openGraph: {
-    title: `${siteConfig.name} | Fast Delivery & Logistics`,
+    title: "Shirwell Shipping | Shipping & Logistics Worldwide",
     description: siteConfig.description,
     url: "/home",
+    images: [
+      {
+        url: "/ship.png",
+        width: 1024,
+        height: 1024,
+        alt: "Shirwell Shipping",
+      },
+    ],
   },
 };
 
