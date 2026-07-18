@@ -1,11 +1,17 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/site";
 
-/** Public sitemap — /home is the primary landing page. */
+/** Public sitemap — home landing pages first for AdSense + Search Console. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   return [
+    {
+      url: absoluteUrl("/"),
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 1,
+    },
     {
       url: absoluteUrl("/home"),
       lastModified: now,

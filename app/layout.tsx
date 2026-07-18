@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
-import AdSenseScript from "./components/AdSenseScript";
 import { GoogleTagManagerBody, GoogleTagManagerHead } from "./components/GoogleTagManager";
 import JsonLd from "./components/JsonLd";
 import SiteLayout from "./components/SiteLayout";
@@ -25,6 +24,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   themeColor: "#000000",
 };
+
+const ADSENSE_CLIENT = adsenseConfig.clientId || "ca-pub-2495432679632375";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -90,9 +91,10 @@ export const metadata: Metadata = {
     apple: [{ url: "/ship.png", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
-  ...(adsenseConfig.scriptEnabled
-    ? { other: { "google-adsense-account": adsenseConfig.clientId } }
-    : {}),
+  // Meta tag verification method (most reliable for Next.js)
+  other: {
+    "google-adsense-account": ADSENSE_CLIENT,
+  },
 };
 
 export default function RootLayout({
@@ -102,10 +104,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jakarta.variable} ${playfair.variable} antialiased`}>
+      <head>
+        {/* Literal AdSense snippet for crawler verification (must match Google's HTML exactly) */}
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <GoogleTagManagerHead />
         <GoogleTagManagerBody />
-        <AdSenseScript />
         <JsonLd />
         <SiteLayout>{children}</SiteLayout>
       </body>

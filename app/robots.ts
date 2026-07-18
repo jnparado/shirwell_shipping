@@ -20,6 +20,14 @@ export default function robots(): MetadataRoute.Robots {
           "/auth/",
         ],
       },
+      {
+        userAgent: "Mediapartners-Google",
+        allow: "/",
+      },
+      {
+        userAgent: "AdsBot-Google",
+        allow: "/",
+      },
     ],
     sitemap: `${siteConfig.url}/sitemap.xml`,
     host: siteConfig.url,
