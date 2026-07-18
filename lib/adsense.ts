@@ -11,6 +11,9 @@ export const adsenseConfig = {
   boxAdSlot,
   /** Homepage mid-content (defaults to box ad slot) */
   inlineSlot,
+  /** Script + meta load when publisher id is set (needed for AdSense site verification) */
+  scriptEnabled: Boolean(clientId),
+  /** Ad units require both client + at least one slot */
   enabled: Boolean(clientId && (bannerSlot || boxAdSlot)),
   /** ads.txt publisher id (pub-xxxxxxxx) */
   publisherId: clientId ? clientId.replace(/^ca-pub-/, "pub-") : "",

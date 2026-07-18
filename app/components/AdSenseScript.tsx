@@ -1,8 +1,12 @@
 import { adsenseConfig } from "@/lib/adsense";
 import Script from "next/script";
 
+/**
+ * AdSense ownership verification + ads loader.
+ * Must appear in <head> with the ca-pub client id.
+ */
 export default function AdSenseScript() {
-  if (!adsenseConfig.enabled) return null;
+  if (!adsenseConfig.scriptEnabled) return null;
 
   return (
     <Script
@@ -10,7 +14,7 @@ export default function AdSenseScript() {
       async
       src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseConfig.clientId}`}
       crossOrigin="anonymous"
-      strategy="afterInteractive"
+      strategy="beforeInteractive"
     />
   );
 }

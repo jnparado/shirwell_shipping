@@ -90,7 +90,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/ship.png", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
-  ...(adsenseConfig.enabled
+  ...(adsenseConfig.scriptEnabled
     ? { other: { "google-adsense-account": adsenseConfig.clientId } }
     : {}),
 };
