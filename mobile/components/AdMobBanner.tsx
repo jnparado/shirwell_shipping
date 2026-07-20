@@ -1,3 +1,4 @@
+import { useAdMobReady } from "@/components/AdMobProvider";
 import { ADMOB_BANNER_UNIT_ID, ADMOB_ENABLED } from "@/constants/admob";
 import { colors } from "@/constants/theme";
 import { useState } from "react";
@@ -7,9 +8,10 @@ import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 
 export function AdMobBanner() {
   const insets = useSafeAreaInsets();
+  const adsReady = useAdMobReady();
   const [visible, setVisible] = useState(true);
 
-  if (!ADMOB_ENABLED || !visible) return null;
+  if (!ADMOB_ENABLED || !adsReady || !visible) return null;
 
   return (
     <View style={[styles.container, { paddingBottom: insets.bottom }]}>

@@ -52,7 +52,14 @@ EXPO_PUBLIC_ADMOB_ANDROID_APP_ID=ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy
 EXPO_PUBLIC_ADMOB_BANNER_UNIT_ID=ca-app-pub-xxxxxxxxxxxxxxxx/zzzzzzzzzz
 ```
 
-If unset, Google **test ad IDs** are used. After changing AdMob config, rebuild:
+**Qualification checklist**
+
+1. Host `app-ads.txt` on the developer website linked in AdMob (served at `/app-ads.txt` on this site).
+2. In AdMob → **Privacy & messaging**, create and publish a GDPR / UMP consent message.
+3. The app gathers UMP consent via `AdsConsent.gatherConsent()` before initializing the Mobile Ads SDK.
+4. Use production AdMob IDs only in release builds; leave unset locally to use Google **test** IDs.
+
+After changing AdMob config, rebuild:
 
 ```bash
 npx expo prebuild --platform android --clean

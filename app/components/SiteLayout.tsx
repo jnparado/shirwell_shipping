@@ -1,5 +1,6 @@
 import AdSenseAd from "./AdSenseAd";
 import BottomNav from "./BottomNav";
+import CookieConsent from "./CookieConsent";
 import Footer from "./Footer";
 import Header from "./Header";
 import { adsenseConfig } from "@/lib/adsense";
@@ -21,6 +22,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       )}
       <Footer />
       <BottomNav />
+      <CookieConsent />
     </>
   );
 }

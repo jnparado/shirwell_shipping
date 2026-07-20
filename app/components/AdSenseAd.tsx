@@ -1,6 +1,7 @@
 "use client";
 
 import { adsenseConfig } from "@/lib/adsense";
+import { useAdConsent } from "@/app/components/CookieConsent";
 import { useEffect, useRef } from "react";
 
 type AdSenseAdProps = {
@@ -23,10 +24,14 @@ export default function AdSenseAd({
   className = "",
 }: AdSenseAdProps) {
   const adSlot = slot ?? adsenseConfig.bannerSlot;
+  const consent = useAdConsent();
   const initialized = useRef(false);
 
+  // Personalized ads only after Accept; Reject = no ad units (script may still load for verification)
+  const adsAllowed = consent === "accepted" || consent === null;
+
   useEffect(() => {
-    if (!adsenseConfig.clientId || !adSlot || initialized.current) return;
+    if (!adsAllowed || !adsenseConfig.clientId || !adSlot || initialized.current) return;
 
     const pushAd = () => {
       try {
@@ -50,9 +55,9 @@ export default function AdSenseAd({
       window.clearInterval(interval);
       window.clearTimeout(timeout);
     };
-  }, [adSlot]);
+  }, [adSlot, adsAllowed]);
 
-  if (!adsenseConfig.clientId || !adSlot) return null;
+  if (!adsAllowed || !adsenseConfig.clientId || !adSlot) return null;
 
   return (
     <div className={`adsense-container ${className}`.trim()}>

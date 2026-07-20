@@ -9,6 +9,13 @@ export const siteConfig = {
   ),
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "shirwellenterprices@gmail.com",
   contactPhone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "+1 (234) 567-890",
+  address: {
+    line1: "123 Logistics Way, Suite 100",
+    city: "Shipping City",
+    region: "SC",
+    postalCode: "12345",
+    country: "United States",
+  },
   tagline: "Fast • Reliable • Worldwide Shipping",
   description:
     "Shirwell Shipping — fast, reliable shipping and logistics worldwide. Track shipments, book sea freight, air freight, and land freight, and get cost-effective delivery for every business.",
@@ -38,4 +45,9 @@ export function absoluteUrl(path = "/"): string {
   const base = siteConfig.url;
   if (!path || path === "/") return base;
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+export function formatAddress(): string {
+  const { line1, city, region, postalCode, country } = siteConfig.address;
+  return `${line1}, ${city}, ${region} ${postalCode}, ${country}`;
 }

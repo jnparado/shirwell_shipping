@@ -1,6 +1,6 @@
 import Link from "next/link";
 import LogoBrand from "./LogoBrand";
-import { siteConfig } from "@/lib/site";
+import { formatAddress, siteConfig } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -19,14 +19,14 @@ export default function Footer() {
             <h3 className="text-sm font-bold uppercase tracking-widest text-foreground">Services</h3>
             <ul className="mt-4 space-y-2.5 text-sm">
               {[
-                "Domestic Courier Solutions",
-                "International Courier Solutions",
-                "Air Courier Solutions",
-                "E-Commerce Logistics",
+                { href: "/shipping-guide", label: "Shipping Guide" },
+                { href: "/book", label: "Book Freight" },
+                { href: "/track", label: "Track Shipment" },
+                { href: "/calculator", label: "Rate Calculator" },
               ].map((item) => (
-                <li key={item}>
-                  <Link href="/#services" className="transition-colors hover:text-gold">
-                    {item}
+                <li key={item.href}>
+                  <Link href={item.href} className="transition-colors hover:text-gold">
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -34,15 +34,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-widest text-foreground">Quick Links</h3>
+            <h3 className="text-sm font-bold uppercase tracking-widest text-foreground">Company</h3>
             <ul className="mt-4 space-y-2.5 text-sm">
               {[
                 { href: "/home", label: "Home" },
-                { href: "/track", label: "Track Shipment" },
-                { href: "/book", label: "Book a Shipment" },
-                { href: "/calculator", label: "Rate Calculator" },
-                { href: "/shipments", label: "My Shipments" },
-                { href: "/account", label: "My Account" },
+                { href: "/about", label: "About Us" },
+                { href: "/contact", label: "Contact" },
+                { href: "/privacy", label: "Privacy Policy" },
+                { href: "/terms", label: "Terms of Service" },
                 { href: "/login", label: "Login" },
               ].map((link) => (
                 <li key={link.href}>
@@ -72,11 +71,7 @@ export default function Footer() {
                   {siteConfig.contactPhone}
                 </a>
               </li>
-              <li>
-                123 Logistics Way, Suite 100
-                <br />
-                Shipping City, SC 12345
-              </li>
+              <li>{formatAddress()}</li>
             </ul>
           </div>
         </div>
@@ -86,15 +81,15 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:justify-end">
-            {["Twitter", "LinkedIn", "Facebook"].map((social) => (
-              <a
-                key={social}
-                href="#"
-                className="text-sm text-muted/70 transition-colors hover:text-gold"
-              >
-                {social}
-              </a>
-            ))}
+            <Link href="/privacy" className="text-sm text-muted/70 transition-colors hover:text-gold">
+              Privacy
+            </Link>
+            <Link href="/terms" className="text-sm text-muted/70 transition-colors hover:text-gold">
+              Terms
+            </Link>
+            <Link href="/contact" className="text-sm text-muted/70 transition-colors hover:text-gold">
+              Contact
+            </Link>
           </div>
         </div>
       </div>
