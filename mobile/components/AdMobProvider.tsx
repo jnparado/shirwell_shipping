@@ -14,14 +14,15 @@ type Props = {
 
 const AdMobReadyContext = createContext(false);
 
-/** True when UMP allows requesting ads and the Mobile Ads SDK has initialized. */
+/** True when the Mobile Ads SDK has initialized and banners may load. */
 export function useAdMobReady() {
   return useContext(AdMobReadyContext);
 }
 
 /**
- * Initializes Google Mobile Ads after UMP consent (EEA / regulated regions).
- * Ads load only when `canRequestAds` is true.
+ * Gathers UMP consent when available, then initializes Google Mobile Ads.
+ * Always initializes the SDK so test/production banners can load even if
+ * Privacy & messaging is not configured yet in AdMob.
  */
 export function AdMobProvider({ children }: Props) {
   const [adsReady, setAdsReady] = useState(!ADMOB_ENABLED);
@@ -33,27 +34,22 @@ export function AdMobProvider({ children }: Props) {
     let cancelled = false;
 
     async function prepareAds() {
-      let canRequestAds = true;
-
       try {
-        const consent = await AdsConsent.gatherConsent();
-        canRequestAds = consent.canRequestAds;
+        await AdsConsent.gatherConsent();
       } catch {
-        canRequestAds = true;
+        /* UMP optional until Privacy & messaging is published */
       }
 
       if (cancelled) return;
 
-      if (canRequestAds) {
-        try {
-          await mobileAds().initialize();
-        } catch {
-          /* ignore init errors — banner will fail soft */
-        }
+      try {
+        await mobileAds().initialize();
+      } catch {
+        /* banner will fail soft */
       }
 
       if (!cancelled) {
-        setAdsReady(canRequestAds);
+        setAdsReady(true);
         setShellReady(true);
       }
     }

@@ -1,9 +1,12 @@
 import Link from "next/link";
 import type { Guide } from "@/lib/guides";
 import { guides } from "@/lib/guides";
+import AdSenseAd from "@/app/components/AdSenseAd";
+import { adsenseConfig } from "@/lib/adsense";
 
 export function GuideArticle({ guide }: { guide: Guide }) {
   const related = guides.filter((g) => g.slug !== guide.slug).slice(0, 3);
+  const mid = Math.ceil(guide.sections.length / 2);
 
   return (
     <main className="min-h-[calc(100dvh-4rem)] bg-background px-4 py-10 sm:px-6 sm:py-14">
@@ -18,22 +21,33 @@ export function GuideArticle({ guide }: { guide: Guide }) {
         </p>
 
         <div className="mt-10 space-y-10 text-base leading-relaxed text-foreground/90">
-          {guide.sections.map((section) => (
-            <section key={section.heading}>
-              <h2 className="text-xl font-semibold text-foreground">{section.heading}</h2>
-              {section.paragraphs.map((p) => (
-                <p key={p.slice(0, 48)} className="mt-3 text-muted">
-                  {p}
-                </p>
-              ))}
-              {section.bullets && section.bullets.length > 0 && (
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-muted">
-                  {section.bullets.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+          {guide.sections.map((section, index) => (
+            <div key={section.heading}>
+              <section>
+                <h2 className="text-xl font-semibold text-foreground">{section.heading}</h2>
+                {section.paragraphs.map((p) => (
+                  <p key={p.slice(0, 48)} className="mt-3 text-muted">
+                    {p}
+                  </p>
+                ))}
+                {section.bullets && section.bullets.length > 0 && (
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-muted">
+                    {section.bullets.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </section>
+              {adsenseConfig.enabled && index === mid - 1 && (
+                <section aria-label="Advertisement" className="overflow-hidden py-4">
+                  <AdSenseAd
+                    className="min-h-[250px]"
+                    slot={adsenseConfig.boxAdSlot}
+                    format="rectangle"
+                  />
+                </section>
               )}
-            </section>
+            </div>
           ))}
         </div>
 

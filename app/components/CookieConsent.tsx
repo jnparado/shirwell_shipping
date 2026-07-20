@@ -56,8 +56,7 @@ export default function CookieConsent() {
           <Link href="/privacy" className="font-semibold text-gold hover:underline">
             Privacy Policy
           </Link>
-          . Choose Accept to allow personalized ads, or Reject to continue with essential
-          cookies only.
+          . Choose Accept for personalized ads, or Reject for non-personalized ads only.
         </p>
         <div className="flex shrink-0 flex-wrap gap-2">
           <button

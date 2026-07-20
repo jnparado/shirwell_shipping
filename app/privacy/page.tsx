@@ -72,9 +72,9 @@ export default function PrivacyPolicyPage() {
         .
       </p>
       <p>
-        Users in the European Economic Area (EEA), UK, and Switzerland may see a consent
-        prompt before personalized ads are shown. You can withdraw consent at any time via our
-        cookie preferences.
+        Visitors may see a cookie banner. Choosing Accept allows personalized ads; choosing
+        Reject still allows non-personalized ads. You can clear site data in your browser to
+        reset this choice.
       </p>
 
       <h2>4. Cookies</h2>

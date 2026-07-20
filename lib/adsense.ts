@@ -1,7 +1,14 @@
-const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID ?? "";
-const bannerSlot = process.env.NEXT_PUBLIC_ADSENSE_SLOT_BANNER ?? "";
-const boxAdSlot = process.env.NEXT_PUBLIC_ADSENSE_SLOT_BOX_AD ?? bannerSlot;
-const inlineSlot = process.env.NEXT_PUBLIC_ADSENSE_SLOT_INLINE ?? boxAdSlot;
+/** Production defaults so ads work even if Vercel env vars are missing. */
+const DEFAULT_CLIENT_ID = "ca-pub-2495432679632375";
+const DEFAULT_SLOT = "4465041934";
+
+const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID?.trim() || DEFAULT_CLIENT_ID;
+const bannerSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_BANNER?.trim() || DEFAULT_SLOT;
+const boxAdSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_BOX_AD?.trim() || bannerSlot;
+const inlineSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_INLINE?.trim() || boxAdSlot;
 
 export const adsenseConfig = {
   clientId,

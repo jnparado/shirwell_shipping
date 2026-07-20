@@ -25,7 +25,7 @@ export const viewport: Viewport = {
   themeColor: "#000000",
 };
 
-const ADSENSE_CLIENT = adsenseConfig.clientId || "ca-pub-2495432679632375";
+const ADSENSE_CLIENT = adsenseConfig.clientId;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

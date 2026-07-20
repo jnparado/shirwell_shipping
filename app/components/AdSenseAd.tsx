@@ -13,10 +13,17 @@ type AdSenseAdProps = {
 
 declare global {
   interface Window {
-    adsbygoogle?: Record<string, unknown>[];
+    adsbygoogle?: Array<Record<string, unknown>> & {
+      requestNonPersonalizedAds?: number;
+      loaded?: boolean;
+    };
   }
 }
 
+/**
+ * Renders a Google AdSense unit.
+ * Reject consent → non-personalized ads; Accept / no choice → personalized.
+ */
 export default function AdSenseAd({
   slot,
   format = "auto",
@@ -25,45 +32,65 @@ export default function AdSenseAd({
 }: AdSenseAdProps) {
   const adSlot = slot ?? adsenseConfig.bannerSlot;
   const consent = useAdConsent();
-  const initialized = useRef(false);
+  const insRef = useRef<HTMLModElement>(null);
+  const pushed = useRef(false);
 
-  // Personalized ads only after Accept; Reject = no ad units (script may still load for verification)
-  const adsAllowed = consent === "accepted" || consent === null;
+  const nonPersonalized = consent === "rejected";
 
   useEffect(() => {
-    if (!adsAllowed || !adsenseConfig.clientId || !adSlot || initialized.current) return;
+    if (!adsenseConfig.clientId || !adSlot || pushed.current) return;
 
-    const pushAd = () => {
+    let cancelled = false;
+    let attempts = 0;
+
+    const tryPush = () => {
+      if (cancelled || pushed.current) return true;
+
+      const ins = insRef.current;
+      if (!ins) return false;
+
+      if (ins.getAttribute("data-adsbygoogle-status") || ins.getAttribute("data-ad-status")) {
+        pushed.current = true;
+        return true;
+      }
+
+      // Script tag is in <head>; adsbygoogle is created when it loads
+      if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
+        return false;
+      }
+
       try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-        initialized.current = true;
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.requestNonPersonalizedAds = nonPersonalized ? 1 : 0;
+        window.adsbygoogle.push({});
+        pushed.current = true;
         return true;
       } catch {
         return false;
       }
     };
 
-    if (pushAd()) return;
+    if (tryPush()) return;
 
     const interval = window.setInterval(() => {
-      if (pushAd()) window.clearInterval(interval);
-    }, 400);
-
-    const timeout = window.setTimeout(() => window.clearInterval(interval), 10000);
+      attempts += 1;
+      if (tryPush() || attempts > 40) window.clearInterval(interval);
+    }, 250);
 
     return () => {
+      cancelled = true;
       window.clearInterval(interval);
-      window.clearTimeout(timeout);
     };
-  }, [adSlot, adsAllowed]);
+  }, [adSlot, nonPersonalized]);
 
-  if (!adsAllowed || !adsenseConfig.clientId || !adSlot) return null;
+  if (!adsenseConfig.clientId || !adSlot) return null;
 
   return (
     <div className={`adsense-container ${className}`.trim()}>
       <ins
+        ref={insRef}
         className="adsbygoogle"
-        style={{ display: "block" }}
+        style={{ display: "block", minHeight: 90, width: "100%" }}
         data-ad-client={adsenseConfig.clientId}
         data-ad-slot={adSlot}
         data-ad-format={format}
