@@ -20,6 +20,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm">
               {[
                 { href: "/shipping-guide", label: "Shipping Guide" },
+                { href: "/guides", label: "Guides & Resources" },
                 { href: "/book", label: "Book Freight" },
                 { href: "/track", label: "Track Shipment" },
                 { href: "/calculator", label: "Rate Calculator" },
