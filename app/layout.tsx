@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import { GoogleTagManagerBody, GoogleTagManagerHead } from "./components/GoogleTagManager";
 import JsonLd from "./components/JsonLd";
 import SiteLayout from "./components/SiteLayout";
+import SwgBasicScript from "./components/SwgBasicScript";
 import { adsenseConfig } from "@/lib/adsense";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 import "./globals.css";
@@ -115,6 +116,7 @@ export default function RootLayout({
       <body>
         <GoogleTagManagerHead />
         <GoogleTagManagerBody />
+        <SwgBasicScript />
         <JsonLd />
         <SiteLayout>{children}</SiteLayout>
       </body>

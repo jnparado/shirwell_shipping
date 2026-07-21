@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { GuideArticle } from "@/app/components/GuideArticle";
+import GuideJsonLd from "@/app/components/GuideJsonLd";
 import { getAllGuideSlugs, getGuide } from "@/lib/guides";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
@@ -34,5 +35,10 @@ export default async function GuidePage({ params }: Props) {
   const guide = getGuide(slug);
   if (!guide) notFound();
 
-  return <GuideArticle guide={guide} />;
+  return (
+    <>
+      <GuideJsonLd guide={guide} />
+      <GuideArticle guide={guide} />
+    </>
+  );
 }

@@ -77,7 +77,22 @@ export default function PrivacyPolicyPage() {
         reset this choice.
       </p>
 
-      <h2>4. Cookies</h2>
+      <h2>4. Google Publisher Center &amp; Reader Revenue Manager</h2>
+      <p>
+        If we enable Google Publisher Center features such as Reader Revenue Manager (for
+        example reader registration, contributions, or subscriptions), Google may process
+        reader account, email, payment, and engagement data on our behalf according to Google&apos;s
+        terms and our instructions. That data is used to provide access offers, process
+        payments where applicable, prevent abuse, and improve reader experience.
+      </p>
+      <p>
+        You can review related Google disclosures in your Google Account settings. For privacy
+        requests about data we control directly, contact us using the details below. Our
+        publication policies overview is available at{" "}
+        <Link href="/policies">Publication Policies</Link>.
+      </p>
+
+      <h2>5. Cookies</h2>
       <p>
         We use essential cookies for security and authentication, preference cookies for
         settings, analytics cookies to understand traffic, and advertising cookies for AdSense.
@@ -85,49 +100,50 @@ export default function PrivacyPolicyPage() {
         browser settings; disabling some cookies may affect site features.
       </p>
 
-      <h2>5. Sharing of Information</h2>
+      <h2>6. Sharing of Information</h2>
       <p>
         We may share information with service providers who help operate our platform (for
-        example hosting, authentication, maps, analytics, and advertising partners such as
-        Google). We do not sell your personal information as a primary business practice. We may
-        disclose information if required by law or to protect our rights and users.
+        example hosting, authentication, maps, analytics, advertising partners such as Google,
+        and payment processors used with reader offers). We do not sell your personal
+        information as a primary business practice. We may disclose information if required by
+        law or to protect our rights and users.
       </p>
 
-      <h2>6. Data Retention &amp; Security</h2>
+      <h2>7. Data Retention &amp; Security</h2>
       <p>
         We retain information only as long as needed for the purposes described above, then
         delete or anonymize it when no longer required. We use reasonable administrative and
         technical safeguards, but no method of transmission over the Internet is 100% secure.
       </p>
 
-      <h2>7. Your Rights</h2>
+      <h2>8. Your Rights</h2>
       <p>
         Depending on your location, you may have rights to access, correct, delete, or restrict
         processing of your personal data, and to object to certain processing or withdraw
         consent. Contact us using the details below to exercise these rights.
       </p>
 
-      <h2>8. Children&apos;s Privacy</h2>
+      <h2>9. Children&apos;s Privacy</h2>
       <p>
         Our services are not directed to children under 13 (or the minimum age required in your
         jurisdiction). We do not knowingly collect personal information from children.
       </p>
 
-      <h2>9. International Transfers</h2>
+      <h2>10. International Transfers</h2>
       <p>
         Your information may be processed in countries other than your own, including where our
         service providers operate. We take steps to ensure appropriate protections are in place.
       </p>
 
-      <h2>10. Contact Us</h2>
+      <h2>11. Contact Us</h2>
       <p>
         For privacy questions or requests, contact {siteConfig.name} at{" "}
         <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a> or{" "}
         {siteConfig.contactPhone}. Postal address: {formatAddress()}.
       </p>
       <p>
-        Related pages: <Link href="/terms">Terms of Service</Link>,{" "}
-        <Link href="/contact">Contact</Link>.
+        Related pages: <Link href="/policies">Publication Policies</Link>,{" "}
+        <Link href="/terms">Terms of Service</Link>, <Link href="/contact">Contact</Link>.
       </p>
     </LegalPage>
   );

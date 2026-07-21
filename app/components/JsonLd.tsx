@@ -11,6 +11,14 @@ export default function JsonLd() {
     description: siteConfig.description,
     email: siteConfig.contactEmail,
     telephone: siteConfig.contactPhone,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.address.line1,
+      addressLocality: siteConfig.address.city,
+      addressRegion: siteConfig.address.region,
+      postalCode: siteConfig.address.postalCode,
+      addressCountry: siteConfig.address.country,
+    },
     sameAs: [],
     contactPoint: {
       "@type": "ContactPoint",

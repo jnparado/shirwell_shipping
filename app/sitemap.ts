@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/calculator", changeFrequency: "monthly", priority: 0.8 },
     { path: "/privacy", changeFrequency: "yearly", priority: 0.5 },
     { path: "/terms", changeFrequency: "yearly", priority: 0.5 },
+    { path: "/policies", changeFrequency: "yearly", priority: 0.55 },
     ...guides.map((guide) => ({
       path: `/guides/${guide.slug}`,
       changeFrequency: "monthly" as const,

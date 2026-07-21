@@ -41,6 +41,7 @@ export default function Footer() {
                 { href: "/home", label: "Home" },
                 { href: "/about", label: "About Us" },
                 { href: "/contact", label: "Contact" },
+                { href: "/policies", label: "Publication Policies" },
                 { href: "/privacy", label: "Privacy Policy" },
                 { href: "/terms", label: "Terms of Service" },
                 { href: "/login", label: "Login" },
@@ -82,6 +83,9 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:justify-end">
+            <Link href="/policies" className="text-sm text-muted/70 transition-colors hover:text-gold">
+              Policies
+            </Link>
             <Link href="/privacy" className="text-sm text-muted/70 transition-colors hover:text-gold">
               Privacy
             </Link>
