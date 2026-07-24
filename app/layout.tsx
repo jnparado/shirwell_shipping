@@ -108,9 +108,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.variable} ${playfair.variable} antialiased`}>
       <head>
-        {/* Google tag (gtag.js) — immediately after <head> for Tag diagnostics */}
+        {/* Google Tag Manager — as high in <head> as possible */}
+        <GoogleTagManagerHead />
+        {/* Google tag (gtag.js) */}
         <GoogleTag />
-        {/* Literal AdSense snippet for crawler verification (must match Google's HTML exactly) */}
+        {/* Literal AdSense snippet for crawler verification */}
         <script
           async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
@@ -118,7 +120,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <GoogleTagManagerHead />
+        {/* Google Tag Manager (noscript) — immediately after <body> */}
         <GoogleTagManagerBody />
         <ConsentModeSync />
         <SwgBasicScript />
