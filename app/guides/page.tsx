@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import InContentAd from "@/app/components/InContentAd";
 import { guides } from "@/lib/guides";
 import { siteConfig } from "@/lib/site";
 
@@ -21,6 +22,10 @@ export default function GuidesIndexPage() {
           Original, practical articles from {siteConfig.name} to help you pack, book, track, and
           ship with fewer surprises — whether you move one parcel or regular freight.
         </p>
+
+        <div className="mt-8">
+          <InContentAd format="rectangle" />
+        </div>
 
         <ul className="mt-10 space-y-6">
           {guides.map((guide) => (

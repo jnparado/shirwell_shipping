@@ -4,6 +4,7 @@ import AppPageHeader from "@/app/components/ui/AppPageHeader";
 import AppShell from "@/app/components/ui/AppShell";
 import { AppInput, AppSelect } from "@/app/components/ui/AppInput";
 import PrimaryButton from "@/app/components/ui/PrimaryButton";
+import InContentAd from "@/app/components/InContentAd";
 import { MapPin } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
@@ -162,6 +163,8 @@ export default function RateCalculatorPage() {
           </p>
         </div>
       )}
+
+      <InContentAd />
     </AppShell>
   );
 }

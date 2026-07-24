@@ -4,6 +4,7 @@ import AppPageHeader from "@/app/components/ui/AppPageHeader";
 import AppShell from "@/app/components/ui/AppShell";
 import { AppInput, AppTextarea } from "@/app/components/ui/AppInput";
 import PrimaryButton from "@/app/components/ui/PrimaryButton";
+import InContentAd from "@/app/components/InContentAd";
 import { MapPin } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
@@ -88,6 +89,8 @@ export default function BookShipmentPage() {
 
         <PrimaryButton type="submit">Continue</PrimaryButton>
       </form>
+
+      <InContentAd />
     </AppShell>
   );
 }

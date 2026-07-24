@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import { GoogleTagManagerBody, GoogleTagManagerHead } from "./components/GoogleTagManager";
 import ConsentModeSync from "./components/ConsentModeSync";
+import AdSenseAutoAds from "./components/AdSenseAutoAds";
 import GoogleTag from "./components/GoogleTag";
 import JsonLd from "./components/JsonLd";
 import SiteLayout from "./components/SiteLayout";
@@ -123,6 +124,7 @@ export default function RootLayout({
         {/* Google Tag Manager (noscript) — immediately after <body> */}
         <GoogleTagManagerBody />
         <ConsentModeSync />
+        <AdSenseAutoAds />
         <SwgBasicScript />
         <JsonLd />
         <SiteLayout>{children}</SiteLayout>

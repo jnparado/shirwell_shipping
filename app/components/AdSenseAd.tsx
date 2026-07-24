@@ -42,6 +42,7 @@ export default function AdSenseAd({
 
     let cancelled = false;
     let attempts = 0;
+    let interval = 0;
 
     const tryPush = () => {
       if (cancelled || pushed.current) return true;
@@ -52,11 +53,6 @@ export default function AdSenseAd({
       if (ins.getAttribute("data-adsbygoogle-status") || ins.getAttribute("data-ad-status")) {
         pushed.current = true;
         return true;
-      }
-
-      // Script tag is in <head>; adsbygoogle is created when it loads
-      if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
-        return false;
       }
 
       try {
@@ -70,23 +66,25 @@ export default function AdSenseAd({
       }
     };
 
-    if (tryPush()) return;
-
-    const interval = window.setInterval(() => {
-      attempts += 1;
-      if (tryPush() || attempts > 40) window.clearInterval(interval);
-    }, 250);
+    const start = window.setTimeout(() => {
+      if (tryPush()) return;
+      interval = window.setInterval(() => {
+        attempts += 1;
+        if (tryPush() || attempts > 40) window.clearInterval(interval);
+      }, 250);
+    }, 50);
 
     return () => {
       cancelled = true;
-      window.clearInterval(interval);
+      window.clearTimeout(start);
+      if (interval) window.clearInterval(interval);
     };
   }, [adSlot, nonPersonalized]);
 
   if (!adsenseConfig.clientId || !adSlot) return null;
 
   return (
-    <div className={`adsense-container ${className}`.trim()}>
+    <div className={`adsense-container w-full ${className}`.trim()}>
       <ins
         ref={insRef}
         className="adsbygoogle"
