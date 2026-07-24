@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { applyGtagConsent } from "@/lib/consent-mode";
 import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "shirwell_cookie_consent";
@@ -37,6 +38,7 @@ export default function CookieConsent() {
 
   function save(value: "accepted" | "rejected") {
     window.localStorage.setItem(STORAGE_KEY, value);
+    applyGtagConsent(value);
     window.dispatchEvent(new Event("shirwell-consent-changed"));
     setVisible(false);
   }

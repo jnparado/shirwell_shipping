@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import { GoogleTagManagerBody, GoogleTagManagerHead } from "./components/GoogleTagManager";
+import ConsentModeSync from "./components/ConsentModeSync";
+import GoogleTag from "./components/GoogleTag";
 import JsonLd from "./components/JsonLd";
 import SiteLayout from "./components/SiteLayout";
 import SwgBasicScript from "./components/SwgBasicScript";
@@ -106,6 +108,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.variable} ${playfair.variable} antialiased`}>
       <head>
+        {/* Google tag (gtag.js) — immediately after <head> for Tag diagnostics */}
+        <GoogleTag />
         {/* Literal AdSense snippet for crawler verification (must match Google's HTML exactly) */}
         <script
           async
@@ -116,6 +120,7 @@ export default function RootLayout({
       <body>
         <GoogleTagManagerHead />
         <GoogleTagManagerBody />
+        <ConsentModeSync />
         <SwgBasicScript />
         <JsonLd />
         <SiteLayout>{children}</SiteLayout>
